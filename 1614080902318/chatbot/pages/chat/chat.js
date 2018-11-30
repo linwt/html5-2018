@@ -2,6 +2,7 @@ var util = require("../../utils/util.js");
 Page({
   data:{
     top:0,
+    height: wx.getSystemInfoSync().windowHeight,
     question:'',
     content: [{ "isRobot": true, "date": util.formatTime(new Date()), "text": 'Hi，我是聊天机器人TT' }]
   },
@@ -21,7 +22,21 @@ Page({
       var value = event.detail.value;
       this.setData({question:value});
   },
-
+  
+  foucus: function (e) {
+    var that = this;
+    that.setData({
+      bottom: e.detail.height
+    })
+  },
+  
+  blur: function (e) {
+    var that = this;
+    that.setData({
+      bottom: 0
+    })
+  },
+  
   queryAnswer: function() {
       var page = this;
       var question = this.data.question;
