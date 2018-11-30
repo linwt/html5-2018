@@ -1,6 +1,6 @@
 <view class="main-container">
 
-    <scroll-view class="content" scroll-y="true" scroll-top="{{top}}" style="height:450px;">
+    <scroll-view class="content" scroll-y="true" scroll-top="{{top}}" style="height:{{height}}px;">
         <import src="../templates/me-tpl"/>
         <import src="../templates/robot-tpl"/>
         <block wx:for="{{content}}" wx:key="item">
@@ -9,9 +9,9 @@
         </block>
     </scroll-view>
 
-    <view class="sender-container">
+    <view class="sender-container" style="bottom:{{bottom}}px">
         <view style="flex-grow:1">
-            <input placeholder="" value="{{question}}" bindinput="inputEvent"/>
+            <input placeholder="" value="{{question}}" bindinput="inputEvent" adjust-position="{{false}}" bindfocus="foucus" bindblur="blur"/>
         </view>
         <view>
             <button type="primary" bindtap="queryAnswer">发送</button>
